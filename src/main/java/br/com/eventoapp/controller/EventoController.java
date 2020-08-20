@@ -1,13 +1,31 @@
 package br.com.eventoapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.com.eventoapp.model.Evento;
+import br.com.eventoapp.repository.EventoRepository;
 
 @Controller
+@RequestMapping
 public class EventoController {
+	
+	@Autowired
+	private EventoRepository eventoRepository;
 
-	@GetMapping("/cadastrarEvento")
-	public String index() {
+	@GetMapping(value = "/cadastrarEvento")
+	public String formEvento() {
 		return "evento/formEvento";
+	}
+	
+	@PostMapping(value = "/incluirEvento")
+	public String incluirEvento(Evento evento) {
+		
+		eventoRepository.save(evento);
+		
+		return "redirect:/cadastrarEvento";
 	}
 }
