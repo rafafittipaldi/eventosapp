@@ -4,13 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.eventoapp.model.Evento;
 import br.com.eventoapp.repository.EventoRepository;
 
 @Controller
-@RequestMapping
 public class EventoController {
 	
 	@Autowired
@@ -27,5 +26,15 @@ public class EventoController {
 		eventoRepository.save(evento);
 		
 		return "redirect:/cadastrarEvento";
+	}
+	
+	@GetMapping(value = "/listarEventos")
+	public ModelAndView listarEventos() {
+		ModelAndView     mv      = new ModelAndView("index");
+		Iterable<Evento> eventos = eventoRepository.findAll();
+		
+		mv.addObject("eventos", eventos);
+		
+		return mv;
 	}
 }
