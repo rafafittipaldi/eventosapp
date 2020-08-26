@@ -1,7 +1,9 @@
 package br.com.eventoapp.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import br.com.eventoapp.model.Evento;
 
-public interface EventoRepository extends CrudRepository<Evento, Long> {}
+@Repository
+public interface EventoRepository extends JpaRepository<Evento, Long> {}

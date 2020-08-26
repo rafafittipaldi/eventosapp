@@ -22,7 +22,7 @@ public class ConvidadoController {
 
 	@PostMapping(value = "/incluirConvidado")
 	public RedirectView incluirConvidado(Convidado convidado, RedirectAttributes attributes) {
-		Evento evento = eventoRepository.findById(convidado.getEvento().getCodigo()).get();
+		Evento evento = eventoRepository.getOne(convidado.getEvento().getCodigo());
 		
 		convidado.setEvento(evento);
 		
