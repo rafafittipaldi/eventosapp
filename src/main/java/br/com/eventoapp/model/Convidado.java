@@ -3,6 +3,7 @@ package br.com.eventoapp.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -15,7 +16,7 @@ public class Convidado implements Serializable {
 	private String rg;
 	private String nomeConvidado;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Evento evento;
 
 	public String getRg() {
