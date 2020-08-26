@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import br.com.eventoapp.model.Convidado;
 import br.com.eventoapp.model.Evento;
@@ -27,11 +28,11 @@ public class EventoController {
 	}
 	
 	@PostMapping(value = "/incluirEvento")
-	public String incluirEvento(Evento evento) {
+	public RedirectView incluirEvento(Evento evento) {
 		
 		eventoRepository.save(evento);
 		
-		return "redirect:/cadastrarEvento";
+		return new RedirectView("/cadastrarEvento");
 	}
 	
 	@GetMapping(value = "/listarEventos")

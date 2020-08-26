@@ -2,8 +2,9 @@ package br.com.eventoapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import br.com.eventoapp.model.Convidado;
 import br.com.eventoapp.model.Evento;
@@ -19,14 +20,14 @@ public class ConvidadoController {
 	@Autowired
 	private ConvidadoRepository convidadoRepository;
 
-	@PostMapping(value = "/incluirConvidado/{codigoEvento}")
-	public String incluirConvidado(@PathVariable("codigoEvento") Long codigoEvento, Convidado convidado) {
-		Evento evento = eventoRepository.findById(codigoEvento).get();
+	@PostMapping(value = "/incluirConvidado")
+	public RedirectView incluirConvidado(Convidado convidado, RedirectAttributes attributes) {
+		Evento evento = eventoRepository.findById(convidado.getEvento().getCodigo()).get();
 		
 		convidado.setEvento(evento);
 		
 		convidadoRepository.save(convidado);
 		
-		return "redirect:/detalharEvento/{codigoEvento}";
+		return new RedirectView("/detalharEvento/" + convidado.getEvento().getCodigo());
 	} 
 }

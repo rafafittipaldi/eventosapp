@@ -38,7 +38,8 @@
 		
 		<h5 style="text-align: center;">Convidado</h5>
 		
-		<form th:action="@{'/incluirConvidado/' + ${evento.codigo}}" method="post">
+		<form th:action="@{'/incluirConvidado'}" method="post">
+			<input type="hidden" name="evento.codigo" th:value="${evento.codigo}" />
 			<div class="row">
 				<div class="input-field col s12">
 					Nome: <input type="text" name="nomeConvidado" value="" />
