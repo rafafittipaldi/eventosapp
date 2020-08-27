@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head></head>
-<body>
 <div class="alert alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagemError)}">
-	<span style="color: red; font-weight: bold;" th:text="${mensagemError}"></span>
+	<div class="materialert error">
+	    <div class="material-icons">error_outline</div>
+	    <span th:text="${mensagemError}"></span>
+	    <button type="button" class="close-alert">×</button>
+	</div>
 </div>
 
 <div class="alert alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagemSuccess)}">
-	<span style="color: green; font-weight: bold;" th:text="${mensagemSuccess}"></span>
+	<div class="materialert success">
+	    <div class="material-icons">check</div>
+	    <span th:text="${mensagemSuccess}"></span>
+	    <button type="button" class="close-alert">×</button>
+	</div>
 </div>
-</body>
-</html>
