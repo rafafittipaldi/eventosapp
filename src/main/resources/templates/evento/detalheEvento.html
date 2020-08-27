@@ -63,12 +63,14 @@
 				<tr>
 					<th>Nome Convidado</th>
 					<th>R.G.</th>
+					<th>Deletar</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="convidado : ${convidados}">
 					<td><span th:text="${convidado.nomeConvidado}"></span></td>
 					<td><span th:text="${convidado.rg}"></span><td></td>
+					<td><a th:href="@{'/deletarConvidado/' + ${convidado.rg}}"><i class="material-icons left">delete</i></a></td>
 				</tr>
 			</tbody>
 		</table>

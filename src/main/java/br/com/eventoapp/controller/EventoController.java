@@ -45,7 +45,7 @@ public class EventoController {
 		
 		eventoRepository.save(evento);
 		
-		attributes.addFlashAttribute("mensagemSuccess", "Convidado salvo com sucesso!");
+		attributes.addFlashAttribute("mensagemSuccess", "Evento salvo com sucesso!");
 		
 		return rv;
 	}
@@ -71,5 +71,14 @@ public class EventoController {
 		mv.addObject("convidados", convidados);
 		
 		return mv;
+	}
+	
+	@GetMapping(value = "/deletarEvento/{codigo}")
+	public RedirectView deletarEvento(@PathVariable("codigo") Long codigo) {
+		Evento evento = eventoRepository.findById(codigo).get();
+		
+		eventoRepository.delete(evento);
+		
+		return new RedirectView("/listarEventos");
 	}
 }

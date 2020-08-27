@@ -9,4 +9,5 @@ import br.com.eventoapp.model.Evento;
 @Repository
 public interface ConvidadoRepository extends JpaRepository<Convidado, String> {
 	Iterable<Convidado> findByEvento(Evento evento);
+	Convidado findByRg(String rg);
 }
