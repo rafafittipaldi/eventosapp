@@ -38,15 +38,17 @@
 		
 		<h5 style="text-align: center;">Convidado</h5>
 		
+		<th:block th:include="validator/mensagemValidator"></th:block>
+		
 		<form th:action="@{'/incluirConvidado'}" method="post">
 			<input type="hidden" name="evento.codigo" th:value="${evento.codigo}" />
 			<div class="row">
 				<div class="input-field col s12">
-					Nome: <input type="text" name="nomeConvidado" value="" />
+					Nome:* <input type="text" name="nomeConvidado" value="" />
 				</div>
 				
 				<div class="input-field col s3">
-					RG: <input type="text" name="rg" value="" />
+					RG:* <input type="text" name="rg" value="" />
 				</div>
 				
 			</div>

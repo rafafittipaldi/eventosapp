@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Convidado implements Serializable {
@@ -13,7 +14,10 @@ public class Convidado implements Serializable {
 	private static final long serialVersionUID = 7974724330736143261L;
 	
 	@Id
+	@NotEmpty
 	private String rg;
+	
+	@NotEmpty
 	private String nomeConvidado;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
